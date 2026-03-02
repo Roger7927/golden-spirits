@@ -1,39 +1,44 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-    background-color: #000000; /* Preto Matte */
+    background-color: #000000;
     color: #ffffff;
     font-family: 'Montserrat', sans-serif;
     text-align: center;
     overflow-x: hidden;
 }
 
-/* HEADER MONUMENTAL */
-.header { padding: 120px 20px 60px; }
+.header { padding: 120px 20px 80px; }
 
 h1 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(3rem, 12vw, 5.5rem);
+    font-size: clamp(3rem, 12vw, 6rem);
     color: #D4AF37;
-    letter-spacing: 18px;
-    text-transform: uppercase;
+    letter-spacing: 20px;
     font-weight: 700;
+    text-transform: uppercase;
 }
 
 .gold-line {
-    width: 100px;
+    width: 120px;
     height: 1px;
     background-color: #D4AF37;
     margin: 40px auto;
-    opacity: 0.5;
+    opacity: 0.6;
 }
 
-/* VITRINE DE IMPACTO */
+.subtitle {
+    letter-spacing: 8px;
+    font-size: 0.9rem;
+    opacity: 0.5;
+    text-transform: uppercase;
+}
+
 .showcase {
     display: flex;
     flex-direction: column;
-    gap: 150px; /* Espaço de grife entre produtos */
-    padding-bottom: 150px;
+    gap: 180px; /* Espaço de grife entre produtos */
+    padding-bottom: 200px;
 }
 
 .product-card {
@@ -41,41 +46,48 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 0 20px;
 }
 
-/* FOTOS QUE TOMAM A TELA */
+/* FOTOS MONUMENTAIS */
 .product-card img {
-    width: 95%;
-    max-width: 750px; /* Monumental como prometido */
+    width: 100%;
+    max-width: 750px; /* Impacto real */
     height: auto;
-    filter: drop-shadow(0 20px 60px rgba(212, 175, 55, 0.15));
-    transition: transform 0.8s ease;
+    filter: drop-shadow(0 20px 70px rgba(212, 175, 55, 0.18));
+    transition: transform 1s cubic-bezier(0.2, 1, 0.3, 1);
 }
 
-.product-card:hover img { transform: scale(1.03); }
+.product-card:hover img {
+    transform: scale(1.04);
+}
 
 h3 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 3rem;
+    font-size: clamp(2rem, 8vw, 3.5rem);
     color: #D4AF37;
-    margin: 50px 0 30px;
-    letter-spacing: 5px;
+    margin: 60px 0 35px;
+    letter-spacing: 6px;
+    font-weight: 600;
 }
 
-/* BOTÃO DE LUXO */
 .luxury-btn {
     display: inline-block;
-    padding: 22px 80px;
+    padding: 25px 90px;
     border: 1px solid #D4AF37;
     color: #D4AF37;
     text-decoration: none;
-    font-weight: bold;
-    letter-spacing: 5px;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 6px;
     text-transform: uppercase;
-    transition: 0.4s;
+    transition: all 0.5s ease;
 }
 
 .luxury-btn:hover {
     background-color: #D4AF37;
     color: #000;
+    box-shadow: 0 0 40px rgba(212, 175, 55, 0.4);
 }
+
+.footer { padding: 100px; opacity: 0.3; font-size: 0.7rem; letter-spacing: 4px; }
