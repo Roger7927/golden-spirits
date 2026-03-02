@@ -1,0 +1,89 @@
+/* Copyright: (c) 2026 - Guillermo Roger Hernandez Chandia.
+Status: All Rights Reserved (Todos os Direitos Reservados).
+Contexto: Projeto acadêmico de Análise e Desenvolvimento de Sistemas (ADS).
+*/
+
+body {
+    background-color: #ffffff;
+    margin: 0;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    min-height: 100vh;
+    box-sizing: border-box;
+    
+    /* Moldura de Ouro via Código */
+    border: 12px solid;
+    border-image: linear-gradient(45deg, #af953f, #fbf5b7, #d4af37, #fcf6ba, #b8860b) 1;
+}
+
+/* Detalhes de Diamante (✦) nos Cantos */
+body::before, body::after {
+    content: "✦";
+    position: absolute;
+    color: #d4af37;
+    font-size: 2.5rem;
+    z-index: 10;
+}
+body::before { top: 15px; left: 15px; }
+body::after { top: 15px; right: 15px; }
+
+.header-chic {
+    text-align: center;
+    padding: 40px 0;
+}
+
+h1 {
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    color: #d4af37;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 20px;
+}
+
+.perfume-card {
+    border: 1px solid #f2f2f2;
+    padding: 20px;
+    text-align: center;
+    width: 250px;
+    background: #fff;
+    transition: 0.3s;
+}
+
+/* Destaque para Itens Premium (Sì e Miss Dior) */
+.featured {
+    border: 2px solid #d4af37 !important;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+}
+
+.perfume-card:hover {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    border-color: #d4af37;
+}
+
+.perfume-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+
+.price {
+    color: #b8860b;
+    font-weight: bold;
+}
+
+.btn-luxury {
+    display: inline-block;
+    background: #000;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    margin-top: 10px;
+}
