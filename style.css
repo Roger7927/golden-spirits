@@ -1,33 +1,21 @@
-/* ============================================================
-   ELEGANT CHOICE - VISUAL MONUMENTAL (ADS HARD MODE)
-   ============================================================ */
-
-/* 1. RESET E BASE */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-    background-color: #000000; /* Preto Absoluto */
+    background-color: #000000; /* Preto Matte */
     color: #ffffff;
     font-family: 'Montserrat', sans-serif;
     text-align: center;
     overflow-x: hidden;
-    line-height: 1.6;
 }
 
-/* 2. CABEÇALHO DE LUXO */
-.header {
-    padding: 100px 20px 60px;
-}
+/* HEADER MONUMENTAL */
+.header { padding: 120px 20px 60px; }
 
 h1 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2.5rem, 12vw, 5.5rem);
-    color: #D4AF37; /* Ouro */
-    letter-spacing: 18px; /* Espaçamento Premium */
+    font-size: clamp(3rem, 12vw, 5.5rem);
+    color: #D4AF37;
+    letter-spacing: 18px;
     text-transform: uppercase;
     font-weight: 700;
 }
@@ -37,94 +25,57 @@ h1 {
     height: 1px;
     background-color: #D4AF37;
     margin: 40px auto;
-    opacity: 0.6;
-}
-
-.subtitle {
-    font-size: 0.9rem;
-    letter-spacing: 6px;
-    text-transform: uppercase;
-    color: #ffffff;
     opacity: 0.5;
-    font-weight: 300;
 }
 
-/* 3. VITRINE MONUMENTAL */
+/* VITRINE DE IMPACTO */
 .showcase {
     display: flex;
     flex-direction: column;
-    gap: 150px; /* Espaço para respirar entre os frascos */
-    padding: 50px 20px 150px;
+    gap: 150px; /* Espaço de grife entre produtos */
+    padding-bottom: 150px;
 }
 
 .product-card {
     width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
-    transition: opacity 0.5s ease;
 }
 
-/* FOTOS GIGANTES (AQUI ESTÁ O IMPACTO) */
+/* FOTOS QUE TOMAM A TELA */
 .product-card img {
-    width: 100%;
-    max-width: 700px; /* Monumental */
+    width: 95%;
+    max-width: 750px; /* Monumental como prometido */
     height: auto;
-    filter: drop-shadow(0 20px 50px rgba(212, 175, 55, 0.15));
-    transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+    filter: drop-shadow(0 20px 60px rgba(212, 175, 55, 0.15));
+    transition: transform 0.8s ease;
 }
 
-.product-card:hover img {
-    transform: scale(1.04); /* Leve pulso no hover */
-}
+.product-card:hover img { transform: scale(1.03); }
 
-/* 4. TIPOGRAFIA DO PRODUTO */
 h3 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2rem, 8vw, 3.2rem);
+    font-size: 3rem;
     color: #D4AF37;
     margin: 50px 0 30px;
     letter-spacing: 5px;
-    font-weight: 600;
 }
 
-/* 5. BOTÃO DE AQUISIÇÃO PREMIUM */
+/* BOTÃO DE LUXO */
 .luxury-btn {
     display: inline-block;
-    padding: 22px 70px;
+    padding: 22px 80px;
     border: 1px solid #D4AF37;
     color: #D4AF37;
     text-decoration: none;
     font-weight: bold;
-    font-size: 0.8rem;
     letter-spacing: 5px;
     text-transform: uppercase;
-    transition: all 0.4s ease;
-    background: transparent;
+    transition: 0.4s;
 }
 
 .luxury-btn:hover {
     background-color: #D4AF37;
-    color: #000000;
-    box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
-    transform: translateY(-3px);
-}
-
-/* 6. RODAPÉ DISCRETO */
-.footer {
-    padding: 100px 20px;
-    border-top: 1px solid rgba(212, 175, 55, 0.1);
-    font-size: 0.7rem;
-    letter-spacing: 3px;
-    color: rgba(255, 255, 255, 0.3);
-    text-transform: uppercase;
-}
-
-/* AJUSTE PARA TELAS MENORES */
-@media (max-width: 768px) {
-    h1 { letter-spacing: 8px; }
-    .showcase { gap: 100px; }
-    .luxury-btn { width: 90%; padding: 20px 0; }
+    color: #000;
 }
