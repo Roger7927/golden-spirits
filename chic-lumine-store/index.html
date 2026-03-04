@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Chic Luminé | Semijoias Banhadas</title>
+    <style>
+        body { background-color: #050505; color: #d4af37; font-family: serif; margin: 0; text-align: center; }
+        header { padding: 40px; border-bottom: 1px solid #1a1a1a; }
+        h1 { font-size: 3rem; letter-spacing: 10px; text-transform: uppercase; margin: 0; }
+        .subtitle { font-size: 0.8rem; letter-spacing: 4px; color: #888; }
+        
+        .vitrine { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; padding: 40px; max-width: 1000px; margin: auto; }
+        
+        /* Ajuste das Imagens (Padronização de Elite) */
+        .card { border: 1px solid #111; padding: 15px; background: #080808; display: flex; flex-direction: column; justify-content: space-between; }
+        .card img { 
+            width: 100%; 
+            height: 250px; 
+            object-fit: contain; 
+            background: #fff; 
+            border: 1px solid #222; 
+        }
+
+        /* Hero Piece (Árvore Vitalis) - SEM BORDA */
+        .hero { grid-column: span 3; padding: 30px; margin: 20px 0; border: none; } 
+        .hero img { 
+            width: 100%; 
+            max-width: 450px; 
+            height: 350px; 
+            object-fit: contain; 
+            background: #fff; 
+        }
+
+        .btn { display: inline-block; margin-top: 15px; padding: 10px 20px; border: 1px solid #d4af37; color: #d4af37; text-decoration: none; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
+        .btn:hover { background: #d4af37; color: #000; font-weight: bold; }
+        h2 { font-size: 1.2rem; margin: 10px 0; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>CHIC LUMINÉ</h1>
+    <p class="subtitle">SEMIJOIAS EXCLUSIVAS | BANHADO A OURO 18K</p>
+</header>
+
+<section class="vitrine">
+    <div class="card">
+        <img src="trevo.jpg">
+        <h2>Trevo</h2>
+        <a href="https://amzn.to/3OJj3Rd" target="_blank" class="btn">VER DETALHES</a>
+    </div>
+
+    <div class="card"><img src="girassol.jpg"><h2>Girassol</h2><a href="https://amzn.to/4l7hjxf" target="_blank" class="btn">VER DETALHES</a></div>
+    <div class="card"><img src="ametista.jpg"><h2>Ametista</h2><a href="https://amzn.to/4rdD4gi" target="_blank" class="btn">VER DETALHES</a></div>
+
+    <div class="hero">
+        <img src="vitalis-hero.jpg">
+        <h2>Árvore da Vida Vitalis</h2>
+        <p>Banhado a Ouro 18k - Símbolo de Renovação</p>
+        <a href="https://amzn.to/4ugztkv" target="_blank" class="btn" style="padding: 15px 40px;">GARANTIR EXCLUSIVIDADE</a>
+    </div>
+
+    <div class="card"><img src="ponto-luz.jpg"><h2>Ponto de Luz</h2><a href="https://amzn.to/4spu9cO" target="_blank" class="btn">VER DETALHES</a></div>
+    <div class="card"><img src="heart-glow.jpg"><h2>Heart Glow</h2><a href="https://amzn.to/4rG7PLR" target="_blank" class="btn">VER DETALHES</a></div>
+    <div class="card"><img src="floral-charm.jpg"><h2>Floral Charm</h2><a href="https://amzn.to/4l4b0dK" target="_blank" class="btn">VER DETALHES</a></div>
+</section>
+
+</body>
+</html>
