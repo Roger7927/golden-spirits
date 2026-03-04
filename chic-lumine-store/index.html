@@ -4,29 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chic Luminé | Joias de Elite</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        body { background: #000; color: #d4af37; font-family: sans-serif; text-align: center; margin: 0; }
+        header { padding: 40px; }
+        .vitrine { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px; }
+        .card { background: #1a1a1a; border: 1px solid #d4af37; border-radius: 12px; padding: 15px; width: 280px; }
+        
+        /* Ajuste para centralizar as imagens */
+        .card img { 
+            width: 100%; 
+            height: 250px; 
+            object-fit: contain; /* Garante que a joia apareça inteira e centralizada */
+            background: #fff; 
+            border-radius: 8px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .btn { display: inline-block; background: #d4af37; color: #000; padding: 10px 20px; text-decoration: none; border-radius: 5px; margin-top: 15px; font-weight: bold; width: 80%; }
+        @media (max-width: 600px) { .card { width: 90%; } }
+    </style>
 </head>
 <body>
-    <header style="padding: 50px 20px; background: #000;">
-        <h1 style="font-size: 3rem; margin: 0; color: #d4af37;">CHIC LUMINÉ</h1>
-        <p style="color: #d4af37;">QUIET LUXURY | OURO 18K</p>
+    <header>
+        <h1>CHIC LUMINÉ</h1>
+        <p>QUIET LUXURY | OURO 18K</p>
     </header>
-    <div class="product-container">
-        <div class="product-card">
-            <img src="assets/images/trevo.jpg" alt="Trevo">
-            <h3>Trevo Signature</h3>
-            <a href="https://amzn.to/30JJ3Rd" target="_blank" class="btn">VER DETALHES</a>
-        </div>
-        <div class="product-card">
-            <img src="assets/images/girassol.jpg" alt="Girassol">
-            <h3>Girassol Vitalis</h3>
-            <a href="https://amzn.to/4l7hjxf" target="_blank" class="btn">VER DETALHES</a>
-        </div>
-        <div class="product-card">
-            <img src="assets/images/vitalis-hero.jpg" alt="Árvore">
-            <h3>Árvore Vitalis</h3>
-            <a href="https://amzn.to/4ugztkv" target="_blank" class="btn">VER DETALHES</a>
-        </div>
-    </div>
+    <section class="vitrine">
+        <div class="card"><img src="assets/images/trevo.jpg"><h3>Trevo Signature</h3><a href="https://amzn.to/30JJ3Rd" class="btn">VER DETALHES</a></div>
+        <div class="card"><img src="assets/images/girassol.jpg"><h3>Girassol Vitalis</h3><a href="https://amzn.to/4l7hjxf" class="btn">VER DETALHES</a></div>
+        <div class="card"><img src="assets/images/ametista.jpg"><h3>Ametista</h3><a href="https://amzn.to/4rdD4gi" class="btn">VER DETALHES</a></div>
+        <div class="card"><img src="assets/images/vitalis-hero.jpg"><h3>Árvore Vitalis</h3><a href="https://amzn.to/4ugztkv" class="btn">VER DETALHES</a></div>
+        <div class="card"><img src="assets/images/ponto-luz.jpg"><h3>Ponto de Luz</h3><a href="https://amzn.to/4spu9c0" class="btn">VER DETALHES</a></div>
+        <div class="card"><img src="assets/images/heart-glow.jpg"><h3>Heart Glow</h3><a href="https://amzn.to/4rG7PLR" class="btn">VER DETALHES</a></div>
+        <div class="card"><img src="assets/images/floral-charm.jpg"><h3>Floral Charm</h3><a href="https://amzn.to/4l4b0dK" class="btn">VER DETALHES</a></div>
+    </section>
 </body>
 </html>
