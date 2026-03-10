@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GOLDEN SPIRITS | The Connoisseur's Reserve</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@200;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root { 
+            --gold: #c5a059; 
+            --gold-light: #f5d76e; 
+            --dark: #000; 
+            --glass: rgba(10, 10, 10, 0.9);
+            --fumaça-âmbar: rgba(210, 180, 140, 0.15); /* Cor da fumaça na imagem */
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; outline: none; }
+        body { background: var(--dark); color: #fff; font-family: 'Montserrat', sans-serif; overflow-x: hidden; }
+
+        /* --- FUNDO E ANIMAÇÕES DE FUMAÇA --- */
+        #smoke-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
+        .smoke-particle { position: absolute; background: var(--fumaça-âmbar); border-radius: 50%; filter: blur(80px); animation: drift var(--d) infinite ease-in-out; }
+        
+        @keyframes drift { 0% { transform: translate(0, 0) scale(1); opacity: 0; } 20% { opacity: 0.1; } 50% { opacity: 0.2; } 80% { opacity: 0.1; } 100% { transform: translate(var(--x), var(--y)) scale(var(--s)); opacity: 0; } }
+
+        /* --- HEADER --- */
+        header { padding: 100px 20px; text-align: center; position: relative; z-index: 100; }
+        .title-cinzel { font-family: 'Cinzel', serif; color: var(--gold); font-size: clamp(2rem, 8vw, 3.5rem); letter-spacing: 12px; text-transform: uppercase; margin-bottom: 20px; position: relative; display: inline-block; }
+        .title-cinzel::after { content: ''; display: block; width: 60%; height: 2px; background: var(--gold); margin: 15px auto 0; }
+        .subtitle-montserrat { color: #f0f0f0; letter-spacing: 5px; font-size: 0.75rem; margin-top: 10px; text-transform: uppercase; font-weight: 300; }
+
+        /* --- GRID E CARDS DE VIDRO --- */
+        .showcase { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; padding: 0 8% 80px; max-width: 1500px; margin: 0 auto; position: relative; z-index: 200; }
+        
+        .card { 
+            background: var(--glass); 
+            backdrop-filter: blur(25px); 
+            border: 1px solid rgba(197, 160, 89, 0.2); 
+            padding: 50px 30px; 
+            text-align: center; 
+            border-radius: 20px; 
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+        }
+
+        /* Efeito de Destaque Dourado da Imagem */
+        .card:hover, .card.featured { 
+            border-color: var(--gold-light); 
+            transform: translateY(-15px); 
+            box-shadow: 0 0 40px rgba(197, 160, 89, 0.4); 
+            background: rgba(15, 10, 5, 0.98); 
+        }
+
+        .card img { width: 100%; height: 280px; object-fit: contain; margin-bottom: 30px; filter: drop-shadow(0 15px 20px rgba(0,0,0,0.8)); transition: 0.5s; }
+        .card:hover img { transform: scale(1.05); }
+
+        .whisky-label { font-family: 'Cinzel', serif; font-size: 0.95rem; margin-bottom: 15px; color: #fff; text-transform: uppercase; min-height: 2.5rem; display: flex; align-items: center; justify-content: center; }
+        .price-gold { color: var(--gold); font-weight: 600; font-size: 1.15rem; margin-bottom: 30px; display: block; }
+
+        /* BOTÃO DE RESERVA ESTILO IMAGEM */
+        .btn { 
+            display: inline-block; 
+            text-decoration: none; 
+            color: var(--gold); 
+            border: 1px solid var(--gold); 
+            padding: 15px 30px; 
+            font-size: 0.7rem; 
+            letter-spacing: 4px; 
+            font-weight: 700; 
+            transition: 0.4s; 
+            width: 100%; 
+            border-radius: 30px; 
+            text-transform: uppercase;
+        }
+
+        .btn:hover { background: var(--gold); color: #000; box-shadow: 0 0 30px rgba(197, 160, 89, 0.5); }
+        .card.featured .btn { background: var(--gold); color: #000; }
+    </style>
+</head>
+<body>
+    <div id="smoke-canvas"></div>
+    <header>
+        <p class="subtitle-montserrat">Cinzel</p>
+        <h1 class="title-cinzel">Golden Spirits</h1>
+        <p class="subtitle-montserrat">The Connoisseur's Reserve</p>
+    </header>
+
+    <main class="showcase">
+        <div class="card">
+            <img src="img/coronation.png">
+            <p class="whisky-label">Royal Salute Coronation</p>
+            <span class="price-gold">R$ 249.000,90</span>
+            <a href="https://amzn.to/3Z98K98" target="_blank" class="btn">SOLICITAR RESERVA</a>
+        </div>
+
+        <div class="card featured">
+            <img src="img/macallan.png">
+            <p class="whisky-label">The Macallan 18Y Sherry Oak</p>
+            <span class="price-gold">R$ 4.200,00</span>
+            <a href="https://amzn.to/4rsbtIp" target="_blank" class="btn">RESERVAR</a>
+        </div>
+
+        <div class="card">
+            <img src="img/blue.png">
+            <p class="whisky-label">JW Blue Label Ghost & Rare</p>
+            <span class="price-gold">R$ 2.800,00</span>
+            <a href="https://amzn.to/40U1DEd" target="_blank" class="btn">RESERVAR</a>
+        </div>
+
+        <div class="card">
+            <img src="img/100pipers.png">
+            <p class="whisky-label">100 Pipers Deluxe</p>
+            <span class="price-gold">R$ 95,00</span>
+            <a href="https://amzn.to/3OQVPc6" target="_blank" class="btn">ADQUIRIR AGORA</a>
+        </div>
+    </main>
+
+    <script>
+        const canvas = document.getElementById('smoke-canvas');
+        // Gerador de Fumaça (Smoke Drift System)
+        for(let i=0; i<15; i++) {
+            let smoke = document.createElement('div');
+            smoke.className = 'smoke-particle';
+            smoke.style.left = Math.random() * 100 + '%';
+            smoke.style.top = Math.random() * 100 + '%';
+            smoke.style.width = smoke.style.height = Math.random() * 300 + 200 + 'px';
+            smoke.style.setProperty('--d', Math.random() * 15 + 10 + 's');
+            smoke.style.setProperty('--x', Math.random() * 300 - 150 + 'px');
+            smoke.style.setProperty('--y', Math.random() * 200 - 300 + 'px');
+            smoke.style.setProperty('--s', Math.random() * 1.5 + 1.2);
+            smoke.style.animationDelay = Math.random() * 10 + 's';
+            canvas.appendChild(smoke);
+        }
+    </script>
+</body>
+</html>
