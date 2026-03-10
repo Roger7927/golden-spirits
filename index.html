@@ -3,94 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GOLDEN SPIRITS | The Connoisseur's Reserve</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@200;400;600&display=swap" rel="stylesheet">
+    <title>GOLDEN SPIRITS | Luxury Reserve</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
     <style>
         :root { 
             --gold: #c5a059; 
-            --dark: #000; 
-            --glass: rgba(15, 15, 15, 0.85);
-            --smoke-color: rgba(210, 180, 140, 0.25);
+            --fire: #ff4d00;
+            --glass: rgba(20, 20, 20, 0.9);
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: var(--dark); color: #fff; font-family: 'Montserrat', sans-serif; overflow-x: hidden; min-height: 100vh; }
-
-        /* --- NEBLINA ÂMBAR Densa --- */
-        #smoke-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
-        .smoke { position: absolute; background: var(--smoke-color); border-radius: 50%; filter: blur(70px); animation: move var(--d) infinite linear; opacity: 0; }
-        @keyframes move {
-            0% { transform: translate(0, 0) scale(1); opacity: 0; }
-            20% { opacity: 0.5; }
-            80% { opacity: 0.5; }
-            100% { transform: translate(var(--x), var(--y)) scale(2.8); opacity: 0; }
+        body { 
+            background: #000; 
+            color: #fff; 
+            font-family: 'Montserrat', sans-serif; 
+            overflow-x: hidden;
         }
 
-        header { padding: 60px 20px; text-align: center; position: relative; z-index: 10; }
-        .brand { font-family: 'Cinzel', serif; color: var(--gold); font-size: clamp(1.8rem, 6vw, 3rem); letter-spacing: 10px; text-transform: uppercase; }
-        .tagline { letter-spacing: 4px; font-size: 0.7rem; text-transform: uppercase; margin-top: 10px; color: #888; }
+        /* --- FUNDO DE FUMAÇA E FOGO --- */
+        #smoke-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
+        .smoke { 
+            position: absolute; 
+            background: radial-gradient(circle, rgba(197, 160, 89, 0.2) 0%, transparent 70%); 
+            border-radius: 50%; 
+            filter: blur(80px); 
+            animation: float var(--d) infinite linear; 
+            opacity: 0; 
+        }
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); opacity: 0; }
+            50% { opacity: 0.6; }
+            100% { transform: translate(var(--x), var(--y)) scale(2); opacity: 0; }
+        }
 
-        .showcase { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; padding: 20px 5%; position: relative; z-index: 20; }
+        header { padding: 80px 20px; text-align: center; position: relative; z-index: 10; }
+        .brand { font-family: 'Cinzel', serif; color: var(--gold); font-size: 3.5rem; letter-spacing: 12px; text-transform: uppercase; text-shadow: 0 0 20px rgba(197, 160, 89, 0.5); }
+
+        .showcase { 
+            display: flex; 
+            flex-wrap: wrap; 
+            justify-content: center; 
+            gap: 40px; 
+            padding: 0 5% 100px; 
+            position: relative; 
+            z-index: 20; 
+        }
         
+        /* --- CARDS FLUIDOS --- */
         .card { 
             background: var(--glass); 
-            backdrop-filter: blur(15px); 
-            border: 1px solid rgba(197, 160, 89, 0.15); 
-            padding: 40px 25px; 
+            border: 1px solid rgba(197, 160, 89, 0.1); 
+            padding: 40px 30px; 
             text-align: center; 
-            border-radius: 15px; 
-            width: 300px;
-            transition: 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            border-radius: 30px; /* Bordas bem suaves */
+            width: 320px;
+            transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1); /* Fluidez total */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
-        .card:hover { 
-            border-color: var(--gold); 
-            transform: translateY(-15px); 
-            box-shadow: 0 0 40px rgba(197, 160, 89, 0.3);
-            background: rgba(20, 20, 20, 0.98);
-        }
-        .card img { width: 100%; height: 280px; object-fit: contain; margin-bottom: 25px; filter: drop-shadow(0 15px 25px #000); }
-        
-        .name { font-family: 'Cinzel', serif; font-size: 0.9rem; margin-bottom: 10px; height: 50px; display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1.2; }
-        .price { color: var(--gold); font-weight: 600; font-size: 1.1rem; margin-bottom: 25px; display: block; }
 
-        /* --- BOTÃO DE OURO ESCOVADO (Melhorado) --- */
+        .card:hover { 
+            transform: translateY(-20px) scale(1.02);
+            border-color: var(--fire);
+            box-shadow: 0 20px 50px rgba(255, 77, 0, 0.2);
+        }
+
+        .card img { 
+            width: 100%; 
+            height: 300px; 
+            object-fit: contain; 
+            margin-bottom: 30px; 
+            filter: drop-shadow(0 20px 30px #000);
+            transition: 0.5s;
+        }
+        .card:hover img { transform: scale(1.1); }
+        
+        .name { font-family: 'Cinzel', serif; font-size: 1.2rem; font-weight: 700; color: #fff; margin-bottom: 8px; }
+        .price { color: var(--gold); font-size: 1.4rem; font-weight: 600; margin-bottom: 30px; display: block; }
+
+        /* --- BOTÃO LAVA DOURADA --- */
         .btn { 
             display: block; 
             text-decoration: none; 
             color: #000; 
-            background: linear-gradient(135deg, #c5a059 0%, #f5d76e 50%, #c5a059 100%);
-            padding: 18px; 
-            font-size: 0.75rem; 
-            letter-spacing: 3px; 
+            background: linear-gradient(45deg, #c5a059, #f5d76e, #c5a059);
+            background-size: 200% auto;
+            padding: 20px; 
+            font-size: 0.8rem; 
+            letter-spacing: 4px; 
             font-weight: 700; 
-            border-radius: 30px; 
-            transition: 0.4s;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-        }
-
-        /* Efeito de brilho passando */
-        .btn::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: rgba(255, 255, 255, 0.2);
-            transform: rotate(45deg);
+            border-radius: 50px; 
             transition: 0.5s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            animation: pulse-fire 2s infinite;
+        }
+        .btn:hover { 
+            background-position: right center;
+            transform: scale(1.05);
+            box-shadow: 0 0 30px var(--fire);
+            color: #fff;
         }
 
-        .btn:hover { 
-            box-shadow: 0 0 30px #c5a059; 
-            transform: scale(1.05);
+        @keyframes pulse-fire {
+            0% { box-shadow: 0 0 10px rgba(197, 160, 89, 0.4); }
+            50% { box-shadow: 0 0 25px rgba(255, 77, 0, 0.6); }
+            100% { box-shadow: 0 0 10px rgba(197, 160, 89, 0.4); }
         }
-        
-        .btn:hover::after {
-            left: 100%;
-            top: 100%;
-        }
+
+        footer { text-align: center; padding: 60px 20px; color: #444; font-size: 0.7rem; letter-spacing: 2px; line-height: 2; z-index: 10; position: relative; }
+        .legal { color: #777; font-weight: 600; margin-top: 20px; }
     </style>
 </head>
 <body>
@@ -98,52 +117,61 @@
     
     <header>
         <h1 class="brand">Golden Spirits</h1>
-        <p class="tagline">The Connoisseur's Reserve</p>
     </header>
 
     <main class="showcase">
         <div class="card">
-            <img src="img/miami.jpg" alt="Royal Salute Miami Edition">
-            <p class="name">Royal Salute 21Y<br><span style="font-size: 0.65rem; color: #888;">The Miami Polo Edition</span></p>
+            <img src="img/miami.jpg" alt="Miami Polo">
+            <p class="name">Royal Salute 21Y</p>
+            <p style="font-size: 0.7rem; color: #888; margin-bottom: 10px;">MIAMI POLO EDITION</p>
             <span class="price">R$ 1.399,99</span>
             <a href="https://amzn.to/3P38WqD" target="_blank" class="btn">ADQUIRIR AGORA</a>
         </div>
 
         <div class="card">
-            <img src="img/macallan_18.jpg" alt="The Macallan 18Y">
-            <p class="name">The Macallan 18Y<br><span style="font-size: 0.65rem; color: #888;">Double Cask Edition</span></p>
+            <img src="img/macallan_18.jpg" alt="Macallan 18">
+            <p class="name">Macallan 18Y</p>
+            <p style="font-size: 0.7rem; color: #888; margin-bottom: 10px;">DOUBLE CASK EDITION</p>
             <span class="price">R$ 3.349,90</span>
             <a href="https://amzn.to/4s79U3R" target="_blank" class="btn">ADQUIRIR AGORA</a>
         </div>
 
         <div class="card">
-            <img src="img/blue_umami.jpg" alt="JW Blue Label Elusive Umami">
-            <p class="name">JW Blue Label<br><span style="font-size: 0.65rem; color: #888;">Elusive Umami Edition</span></p>
+            <img src="img/blue_umami.jpg" alt="Blue Label Umami">
+            <p class="name">Blue Label</p>
+            <p style="font-size: 0.7rem; color: #888; margin-bottom: 10px;">ELUSIVE UMAMI</p>
             <span class="price">R$ 2.556,90</span>
             <a href="https://amzn.to/4usoODs" target="_blank" class="btn">ADQUIRIR AGORA</a>
         </div>
 
         <div class="card">
-            <img src="img/hibiki_21.jpg" alt="Hibiki 21 Anos">
-            <p class="name">Hibiki 21 Anos<br><span style="font-size: 0.65rem; color: #888;">Suntory Japanese Whisky</span></p>
+            <img src="img/hibiki_21.jpg" alt="Hibiki 21">
+            <p class="name">Hibiki 21 Anos</p>
+            <p style="font-size: 0.7rem; color: #888; margin-bottom: 10px;">SUNTORY JAPANESE</p>
             <span class="price">R$ 6.300,79</span>
             <a href="https://amzn.to/40p41mh" target="_blank" class="btn">ADQUIRIR AGORA</a>
         </div>
     </main>
 
+    <footer>
+        <p>© 2026 GOLDEN SPIRITS - CURADORIA GUILLERMO</p>
+        <p>TODOS OS DIREITOS RESERVADOS.</p>
+        <p class="legal">APRECIE COM MODERAÇÃO. VENDA PROIBIDA PARA MENORES DE 18 ANOS.</p>
+    </footer>
+
     <script>
         const container = document.getElementById('smoke-container');
-        for (let i = 0; i < 35; i++) {
+        for (let i = 0; i < 40; i++) {
             const smoke = document.createElement('div');
             smoke.className = 'smoke';
-            const size = Math.random() * 500 + 400;
+            const size = Math.random() * 600 + 300;
             smoke.style.width = size + 'px';
             smoke.style.height = size + 'px';
             smoke.style.left = Math.random() * 100 + '%';
             smoke.style.top = Math.random() * 100 + '%';
-            smoke.style.setProperty('--x', (Math.random() * 600 - 300) + 'px');
-            smoke.style.setProperty('--y', (Math.random() * 600 - 300) + 'px');
-            smoke.style.setProperty('--d', (Math.random() * 20 + 15) + 's');
+            smoke.style.setProperty('--x', (Math.random() * 800 - 400) + 'px');
+            smoke.style.setProperty('--y', (Math.random() * 800 - 400) + 'px');
+            smoke.style.setProperty('--d', (Math.random() * 25 + 15) + 's');
             smoke.style.animationDelay = (Math.random() * 10) + 's';
             container.appendChild(smoke);
         }
