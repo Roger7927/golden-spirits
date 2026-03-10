@@ -3,102 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GOLDEN SPIRITS | Luxury Reserve</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
+    <title>GOLDEN SPIRITS | The Inferno Reserve</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Montserrat:wght@200;600&display=swap" rel="stylesheet">
     <style>
         :root { 
             --gold: #c5a059; 
+            --gold-light: #f5d76e; 
             --fire: #ff4d00;
-            --glass: rgba(20, 20, 20, 0.9);
+            --smoke-color: rgba(210, 180, 140, 0.15);
+            --dark: #000; 
+            --glass: rgba(15, 15, 15, 0.9);
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
-            background: #000; 
+            background: var(--dark); 
             color: #fff; 
             font-family: 'Montserrat', sans-serif; 
-            overflow-x: hidden;
+            overflow-x: hidden; 
+            min-height: 100vh;
+            scroll-behavior: smooth;
         }
 
-        /* --- FUNDO DE FUMAÇA E FOGO --- */
+        /* --- SISTEMA DE FOGO E FUMAÇA IMERSIVO --- */
         #smoke-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
-        .smoke { 
-            position: absolute; 
-            background: radial-gradient(circle, rgba(197, 160, 89, 0.2) 0%, transparent 70%); 
-            border-radius: 50%; 
-            filter: blur(80px); 
-            animation: float var(--d) infinite linear; 
-            opacity: 0; 
-        }
-        @keyframes float {
+        .smoke { position: absolute; background: var(--smoke-color); border-radius: 50%; filter: blur(80px); animation: move var(--d) infinite linear; opacity: 0; }
+        @keyframes move {
             0% { transform: translate(0, 0) scale(1); opacity: 0; }
-            50% { opacity: 0.6; }
-            100% { transform: translate(var(--x), var(--y)) scale(2); opacity: 0; }
+            20% { opacity: 0.5; }
+            80% { opacity: 0.5; }
+            100% { transform: translate(var(--x), var(--y)) scale(2.8); opacity: 0; }
         }
 
-        header { padding: 80px 20px; text-align: center; position: relative; z-index: 10; }
-        .brand { font-family: 'Cinzel', serif; color: var(--gold); font-size: 3.5rem; letter-spacing: 12px; text-transform: uppercase; text-shadow: 0 0 20px rgba(197, 160, 89, 0.5); }
-
-        .showcase { 
-            display: flex; 
-            flex-wrap: wrap; 
-            justify-content: center; 
-            gap: 40px; 
-            padding: 0 5% 100px; 
-            position: relative; 
-            z-index: 20; 
+        /* Fundo de Brasas Pulsantes */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at center, transparent 30%, rgba(255, 77, 0, 0.05) 100%);
+            z-index: 0;
+            animation: pulse-ember 8s infinite alternate;
         }
+        @keyframes pulse-ember {
+            0% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        header { padding: 60px 20px; text-align: center; position: relative; z-index: 10; display: flex; flex-direction: column; align-items: center; }
         
-        /* --- CARDS FLUIDOS --- */
+        /* --- EMBLEMA DE ESCUDO (SVG DOURADO) --- */
+        .shield-logo { width: 120px; height: auto; margin-bottom: 20px; filter: drop-shadow(0 0 10px var(--gold)); }
+        
+        .brand { font-family: 'Cinzel Decorative', cursive; color: var(--gold); font-size: clamp(2rem, 8vw, 4rem); letter-spacing: 15px; text-transform: uppercase; text-shadow: 0 0 20px rgba(197, 160, 89, 0.6); }
+
+        .showcase { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; padding: 20px 5% 100px; position: relative; z-index: 20; }
+        
+        /* --- CARDS FLUIDOS E ARREDONDADOS --- */
         .card { 
             background: var(--glass); 
-            border: 1px solid rgba(197, 160, 89, 0.1); 
-            padding: 40px 30px; 
+            backdrop-filter: blur(15px); 
+            border: 1px solid rgba(197, 160, 89, 0.15); 
+            padding: 50px 30px; 
             text-align: center; 
-            border-radius: 30px; /* Bordas bem suaves */
+            border-radius: 40px; /* Bordas Suaves */
             width: 320px;
-            transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1); /* Fluidez total */
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative;
+            overflow: hidden;
+            opacity: 0; /* Começa invisível para fluidez */
+            transform: translateY(30px);
         }
+        
+        /* Classe para ativar a fluidez na rolagem */
+        .card.is-visible { opacity: 1; transform: translateY(0); }
 
         .card:hover { 
-            transform: translateY(-20px) scale(1.02);
-            border-color: var(--fire);
-            box-shadow: 0 20px 50px rgba(255, 77, 0, 0.2);
+            border-color: var(--fire); 
+            transform: translateY(-20px) scale(1.03); 
+            box-shadow: 0 15px 50px rgba(255, 77, 0, 0.25);
+            background: rgba(20, 20, 20, 0.98);
         }
+        
+        /* Efeito de Lava por trás da garrafa */
+        .card::after {
+            content: '';
+            position: absolute;
+            bottom: -50px; left: 50%;
+            transform: translateX(-50%);
+            width: 150px; height: 150px;
+            background: radial-gradient(circle, rgba(255, 77, 0, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(20px);
+            z-index: -1;
+            transition: 0.5s;
+        }
+        .card:hover::after { width: 200px; height: 200px; background: radial-gradient(circle, rgba(255, 77, 0, 0.3) 0%, transparent 70%); }
 
         .card img { 
             width: 100%; 
             height: 300px; 
             object-fit: contain; 
             margin-bottom: 30px; 
-            filter: drop-shadow(0 20px 30px #000);
-            transition: 0.5s;
+            filter: drop-shadow(0 20px 40px #000); 
+            transition: 0.5s ease;
         }
-        .card:hover img { transform: scale(1.1); }
+        .card:hover img { transform: scale(1.05) rotate(2deg); }
         
-        .name { font-family: 'Cinzel', serif; font-size: 1.2rem; font-weight: 700; color: #fff; margin-bottom: 8px; }
-        .price { color: var(--gold); font-size: 1.4rem; font-weight: 600; margin-bottom: 30px; display: block; }
+        .name { font-family: 'Cinzel Decorative', cursive; font-size: 1rem; margin-bottom: 10px; color: #fff; }
+        .price { color: var(--gold); font-weight: 600; font-size: 1.4rem; margin-bottom: 30px; display: block; }
 
-        /* --- BOTÃO LAVA DOURADA --- */
+        /* --- BOTÃO "LAVA DOURADA PULSANTE" (Melhorado) --- */
         .btn { 
-            display: block; 
-            text-decoration: none; 
-            color: #000; 
-            background: linear-gradient(45deg, #c5a059, #f5d76e, #c5a059);
+            display: block; text-decoration: none; color: #000; 
+            background: linear-gradient(135deg, #c5a059 0%, #f5d76e 50%, #c5a059 100%);
             background-size: 200% auto;
-            padding: 20px; 
-            font-size: 0.8rem; 
-            letter-spacing: 4px; 
-            font-weight: 700; 
-            border-radius: 50px; 
+            padding: 20px; font-size: 0.8rem; letter-spacing: 4px; font-weight: 700; border-radius: 50px; 
             transition: 0.5s;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
             animation: pulse-fire 2s infinite;
         }
         .btn:hover { 
-            background-position: right center;
+            background-position: right center; /* Efeito de brilho fluindo */
+            box-shadow: 0 0 30px var(--fire); 
             transform: scale(1.05);
-            box-shadow: 0 0 30px var(--fire);
             color: #fff;
         }
 
@@ -108,58 +134,65 @@
             100% { box-shadow: 0 0 10px rgba(197, 160, 89, 0.4); }
         }
 
-        footer { text-align: center; padding: 60px 20px; color: #444; font-size: 0.7rem; letter-spacing: 2px; line-height: 2; z-index: 10; position: relative; }
-        .legal { color: #777; font-weight: 600; margin-top: 20px; }
+        footer { text-align: center; padding: 40px; font-size: 0.7rem; color: #555; position: relative; z-index: 20; letter-spacing: 2px; }
+        footer p { margin-bottom: 5px; }
     </style>
 </head>
 <body>
     <div id="smoke-container"></div>
     
     <header>
+        <svg class="shield-logo" viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M50 0L0 20V60C0 90 20 110 50 120C80 110 100 90 100 60V20L50 0Z" fill="url(#goldGradient)"/>
+            <path d="M50 10L90 26V60C90 85 75 102 50 110C25 102 10 85 10 60V26L50 10ZM50 2L2 21.2V60C2 91.6 22.8 112 50 122C77.2 112 98 91.6 98 60V21.2L50 2Z" fill="#fff" fill-opacity="0.3"/>
+            <defs>
+                <linearGradient id="goldGradient" x1="50" y1="0" x2="50" y2="120" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#f5d76e"/>
+                    <stop offset="1" stop-color="#c5a059"/>
+                </linearGradient>
+            </defs>
+            <text x="50" y="70" font-family="'Cinzel Decorative'" font-size="28" fill="#000" text-anchor="middle">GS</text>
+        </svg>
         <h1 class="brand">Golden Spirits</h1>
     </header>
 
     <main class="showcase">
         <div class="card">
-            <img src="img/miami.jpg" alt="Miami Polo">
-            <p class="name">Royal Salute 21Y</p>
-            <p style="font-size: 0.7rem; color: #888; margin-bottom: 10px;">MIAMI POLO EDITION</p>
+            <img src="img/miami.jpg" alt="Whisky Royal Salute Miami Edition">
+            <p class="name">Royal Salute 21Y<br><span style="font-size: 0.65rem; color: #888; font-family: 'Montserrat';">The Miami Polo Edition</span></p>
             <span class="price">R$ 1.399,99</span>
             <a href="https://amzn.to/3P38WqD" target="_blank" class="btn">ADQUIRIR AGORA</a>
         </div>
 
         <div class="card">
-            <img src="img/macallan_18.jpg" alt="Macallan 18">
-            <p class="name">Macallan 18Y</p>
-            <p style="font-size: 0.7rem; color: #888; margin-bottom: 10px;">DOUBLE CASK EDITION</p>
+            <img src="img/macallan_18.jpg" alt="Whisky The Macallan 18Y">
+            <p class="name">The Macallan 18Y<br><span style="font-size: 0.65rem; color: #888; font-family: 'Montserrat';">Sherry Oak</span></p>
             <span class="price">R$ 3.349,90</span>
             <a href="https://amzn.to/4s79U3R" target="_blank" class="btn">ADQUIRIR AGORA</a>
         </div>
 
         <div class="card">
-            <img src="img/blue_umami.jpg" alt="Blue Label Umami">
-            <p class="name">Blue Label</p>
-            <p style="font-size: 0.7rem; color: #888; margin-bottom: 10px;">ELUSIVE UMAMI</p>
+            <img src="img/blue_umami.jpg" alt="JW Blue Label Elusive Umami">
+            <p class="name">JW Blue Label<br><span style="font-size: 0.65rem; color: #888; font-family: 'Montserrat';">Elusive Umami Edition</span></p>
             <span class="price">R$ 2.556,90</span>
             <a href="https://amzn.to/4usoODs" target="_blank" class="btn">ADQUIRIR AGORA</a>
         </div>
 
         <div class="card">
-            <img src="img/hibiki_21.jpg" alt="Hibiki 21">
-            <p class="name">Hibiki 21 Anos</p>
-            <p style="font-size: 0.7rem; color: #888; margin-bottom: 10px;">SUNTORY JAPANESE</p>
+            <img src="img/hibiki_21.jpg" alt="Hibiki 21 Anos">
+            <p class="name">Hibiki 21 Anos<br><span style="font-size: 0.65rem; color: #888; font-family: 'Montserrat';">Suntory Japanese Whisky</span></p>
             <span class="price">R$ 6.300,79</span>
             <a href="https://amzn.to/40p41mh" target="_blank" class="btn">ADQUIRIR AGORA</a>
         </div>
     </main>
 
     <footer>
-        <p>© 2026 GOLDEN SPIRITS - CURADORIA GUILLERMO</p>
-        <p>TODOS OS DIREITOS RESERVADOS.</p>
-        <p class="legal">APRECIE COM MODERAÇÃO. VENDA PROIBIDA PARA MENORES DE 18 ANOS.</p>
+        <p>© 2026 GOLDEN SPIRITS | CURADORIA GUILLERMO</p>
+        <p>APRECIE COM MODERAÇÃO. VENDA PROIBIDA PARA MENORES DE 18 ANOS.</p>
     </footer>
 
     <script>
+        // SCRIPT DE NEBLINA DINÂMICA
         const container = document.getElementById('smoke-container');
         for (let i = 0; i < 40; i++) {
             const smoke = document.createElement('div');
@@ -175,6 +208,19 @@
             smoke.style.animationDelay = (Math.random() * 10) + 's';
             container.appendChild(smoke);
         }
+
+        // SCRIPT DE FLUÍDEZ NA ROLAGEM (Intersection Observer)
+        const cards = document.querySelectorAll('.card');
+        const observerOptions = { root: null, threshold: 0.2 };
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        cards.forEach(card => observer.observe(card));
     </script>
 </body>
 </html>
