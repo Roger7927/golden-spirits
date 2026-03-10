@@ -3,35 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GOLDEN SPIRITS | Luxury Reserve</title>
+    <title>GOLDEN SPIRITS | The Mystic Reserve</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
     <style>
         :root { 
             --gold: #c5a059; 
-            --glass: rgba(15, 15, 15, 0.9);
-            --purple: #6a0dad; /* Cor do Roxo Místico */
-            --green: #2e8b57;  /* Cor do Verde Esmeralda */
+            --glass: rgba(10, 10, 10, 0.85);
+            /* Cor Roxa Densa baseada na referência image_10.png */
+            --purple-smoke: rgba(106, 13, 173, 0.4); 
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: #000; color: #fff; font-family: 'Montserrat', sans-serif; overflow-x: hidden; }
+        
+        body { 
+            background: #000; /* Fundo preto puro para destacar a fumaça */
+            color: #fff; 
+            font-family: 'Montserrat', sans-serif; 
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
 
-        /* --- FUNDO DE FUMAÇA COLORIDA --- */
-        #smoke-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
+        /* --- SISTEMA DE FUMAÇA DENSA E ROXA --- */
+        #smoke-container { 
+            position: fixed; 
+            top: 0; left: 0; 
+            width: 100%; height: 100%; 
+            z-index: 1; /* Fica atrás dos cards mas na frente do fundo */
+            pointer-events: none;
+        }
+
         .smoke { 
             position: absolute; 
             border-radius: 50%; 
-            filter: blur(80px); 
+            filter: blur(80px); /* Desfoque maior para parecer nuvem */
             animation: float var(--d) infinite linear; 
             opacity: 0; 
+            mix-blend-mode: screen; /* Faz as cores brilharem mais sobre o preto */
         }
+
         @keyframes float {
             0% { transform: translate(0, 0) scale(1); opacity: 0; }
-            50% { opacity: 0.6; }
+            20% { opacity: 0.6; }
+            80% { opacity: 0.6; }
             100% { transform: translate(var(--x), var(--y)) scale(2); opacity: 0; }
         }
 
+        /* --- ESTILIZAÇÃO DO CONTEÚDO --- */
         header { padding: 80px 20px; text-align: center; position: relative; z-index: 10; }
-        .brand { font-family: 'Cinzel', serif; color: var(--gold); font-size: 3rem; letter-spacing: 10px; text-transform: uppercase; }
+        .brand { 
+            font-family: 'Cinzel', serif; 
+            color: var(--gold); 
+            font-size: 3rem; 
+            letter-spacing: 10px; 
+            text-transform: uppercase;
+            text-shadow: 0 0 15px rgba(197, 160, 89, 0.5);
+        }
 
         .showcase { 
             display: flex; 
@@ -40,7 +65,7 @@
             gap: 30px; 
             padding: 0 5% 100px; 
             position: relative; 
-            z-index: 20; 
+            z-index: 20; /* Garante que os cards fiquem na frente da fumaça */
         }
         
         .card { 
@@ -52,7 +77,11 @@
             width: 320px;
             transition: all 0.5s ease; 
         }
-        .card:hover { transform: translateY(-15px) scale(1.03); border-color: var(--gold); }
+        .card:hover { 
+            transform: translateY(-15px) scale(1.03); 
+            border-color: var(--gold); 
+            box-shadow: 0 0 30px rgba(106, 13, 173, 0.5); /* Brilho roxo no hover */
+        }
         
         .card img { 
             width: 100%; 
@@ -74,7 +103,6 @@
         .btn:hover { background: var(--gold); color: #fff; box-shadow: 0 0 20px var(--gold); transform: scale(1.05); }
 
         footer { text-align: center; padding: 40px 20px; color: #444; font-size: 0.7rem; z-index: 10; position: relative; }
-        footer p { margin-bottom: 5px; }
     </style>
 </head>
 <body>
@@ -88,31 +116,24 @@
         <div class="card">
             <img src="img/miami.jpg" alt="Miami Polo">
             <p class="name">Royal Salute 21Y</p>
-            <p style="font-size: 0.7rem; color: #888; margin-bottom: 10px;">The Miami Polo Edition</p>
             <span class="price">R$ 1.399,99</span>
             <a href="https://amzn.to/3P38WqD" target="_blank" class="btn">ADQUIRIR AGORA</a>
         </div>
-
         <div class="card">
             <img src="img/macallan_18.jpg" alt="Macallan 18">
             <p class="name">Macallan 18Y</p>
-            <p style="font-size: 0.7rem; color: #888; margin-bottom: 10px;">Sherry Oak Scotch</p>
             <span class="price">R$ 3.349,90</span>
             <a href="https://amzn.to/4s79U3R" target="_blank" class="btn">ADQUIRIR AGORA</a>
         </div>
-
         <div class="card">
             <img src="img/blue_umami.jpg" alt="Blue Label Umami">
             <p class="name">JW Blue Label</p>
-            <p style="font-size: 0.7rem; color: #888; margin-bottom: 10px;">Elusive Umami Edition</p>
             <span class="price">R$ 2.556,90</span>
             <a href="https://amzn.to/4usoODs" target="_blank" class="btn">ADQUIRIR AGORA</a>
         </div>
-
         <div class="card">
             <img src="img/hibiki_21.jpg" alt="Hibiki 21">
             <p class="name">Hibiki 21 Anos</p>
-            <p style="font-size: 0.7rem; color: #888; margin-bottom: 10px;">Suntory Japanese Whisky</p>
             <span class="price">R$ 6.300,79</span>
             <a href="https://amzn.to/40p41mh" target="_blank" class="btn">ADQUIRIR AGORA</a>
         </div>
@@ -120,30 +141,29 @@
 
     <footer>
         <p>© 2026 GOLDEN SPIRITS | CURADORIA GUILLERMO</p>
-        <p>A VENDA É PROIBIDA PARA MENORES DE 18 ANOS. APRECIE COM MODERAÇÃO.</p>
     </footer>
 
     <script>
         const container = document.getElementById('smoke-container');
-        for (let i = 0; i < 40; i++) {
+        
+        // Criar 50 partículas de fumaça para densidade
+        for (let i = 0; i < 50; i++) {
             const smoke = document.createElement('div');
             smoke.className = 'smoke';
             
             // Define o tamanho aleatório
-            const size = Math.random() * 600 + 300;
+            const size = Math.random() * 600 + 400; // Nuvens grandes
             smoke.style.width = size + 'px';
             smoke.style.height = size + 'px';
             
-            // Define a cor (Metade Roxo, Metade Verde)
-            if (i % 2 === 0) {
-                smoke.style.background = 'radial-gradient(circle, rgba(106, 13, 173, 0.3) 0%, transparent 70%)';
-            } else {
-                smoke.style.background = 'radial-gradient(circle, rgba(46, 139, 87, 0.3) 0%, transparent 70%)';
-            }
+            // Define a cor Roxa Densa baseada na referência
+            smoke.style.background = 'radial-gradient(circle, rgba(106, 13, 173, 0.5) 0%, transparent 70%)';
 
-            // Posição e velocidade aleatórias
+            // Posição inicial aleatória
             smoke.style.left = Math.random() * 100 + '%';
             smoke.style.top = Math.random() * 100 + '%';
+            
+            // Variáveis de animação aleatórias (direção e velocidade)
             smoke.style.setProperty('--x', (Math.random() * 800 - 400) + 'px');
             smoke.style.setProperty('--y', (Math.random() * 800 - 400) + 'px');
             smoke.style.setProperty('--d', (Math.random() * 25 + 15) + 's');
