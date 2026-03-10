@@ -8,31 +8,29 @@
     <style>
         :root { 
             --gold: #c5a059; 
-            --gold-light: #f5d76e; 
             --dark: #000; 
             --glass: rgba(15, 15, 15, 0.85);
-            --smoke-color: rgba(210, 180, 140, 0.2); /* Neblina Âmbar */
+            --smoke-color: rgba(210, 180, 140, 0.25);
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { background: var(--dark); color: #fff; font-family: 'Montserrat', sans-serif; overflow-x: hidden; min-height: 100vh; }
 
-        /* --- SISTEMA DE NEBLINA (FUMAÇA) --- */
+        /* --- NEBLINA ÂMBAR --- */
         #smoke-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
-        .smoke { position: absolute; background: var(--smoke-color); border-radius: 50%; filter: blur(60px); animation: move var(--d) infinite linear; opacity: 0; }
+        .smoke { position: absolute; background: var(--smoke-color); border-radius: 50%; filter: blur(70px); animation: move var(--d) infinite linear; opacity: 0; }
         @keyframes move {
             0% { transform: translate(0, 0) scale(1); opacity: 0; }
-            20% { opacity: 0.4; }
-            80% { opacity: 0.4; }
-            100% { transform: translate(var(--x), var(--y)) scale(2); opacity: 0; }
+            20% { opacity: 0.5; }
+            80% { opacity: 0.5; }
+            100% { transform: translate(var(--x), var(--y)) scale(2.8); opacity: 0; }
         }
 
         header { padding: 60px 20px; text-align: center; position: relative; z-index: 10; }
         .brand { font-family: 'Cinzel', serif; color: var(--gold); font-size: clamp(1.8rem, 6vw, 3rem); letter-spacing: 10px; text-transform: uppercase; }
         .tagline { letter-spacing: 4px; font-size: 0.7rem; text-transform: uppercase; margin-top: 10px; color: #888; }
 
-        .showcase { display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; padding: 20px 5%; position: relative; z-index: 20; }
+        .showcase { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; padding: 20px 5%; position: relative; z-index: 20; }
         
-        /* CARD CORRIGIDO (Sem o erro de ficar 'clicado') */
         .card { 
             background: var(--glass); 
             backdrop-filter: blur(15px); 
@@ -40,27 +38,25 @@
             padding: 40px 25px; 
             text-align: center; 
             border-radius: 15px; 
-            width: 280px;
-            transition: 0.5s ease;
+            width: 300px;
+            transition: 0.5s cubic-bezier(0.23, 1, 0.32, 1);
         }
-
         .card:hover { 
             border-color: var(--gold); 
-            transform: translateY(-10px); 
-            box-shadow: 0 0 30px rgba(197, 160, 89, 0.2);
-            background: rgba(20, 20, 20, 0.95);
+            transform: translateY(-15px); 
+            box-shadow: 0 0 40px rgba(197, 160, 89, 0.3);
+            background: rgba(20, 20, 20, 0.98);
         }
-
-        .card img { width: 100%; height: 250px; object-fit: contain; margin-bottom: 20px; filter: drop-shadow(0 10px 15px #000); }
+        .card img { width: 100%; height: 280px; object-fit: contain; margin-bottom: 25px; filter: drop-shadow(0 15px 25px #000); }
         
-        .name { font-family: 'Cinzel', serif; font-size: 0.85rem; margin-bottom: 10px; height: 40px; display: flex; align-items: center; justify-content: center; }
-        .price { color: var(--gold); font-weight: 600; font-size: 1rem; margin-bottom: 25px; display: block; }
+        .name { font-family: 'Cinzel', serif; font-size: 0.9rem; margin-bottom: 10px; height: 50px; display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1.2; }
+        .price { color: var(--gold); font-weight: 600; font-size: 1.1rem; margin-bottom: 25px; display: block; }
 
         .btn { 
             display: block; text-decoration: none; color: var(--gold); border: 1px solid var(--gold); 
-            padding: 12px; font-size: 0.65rem; letter-spacing: 3px; font-weight: 700; border-radius: 25px; transition: 0.4s;
+            padding: 15px; font-size: 0.7rem; letter-spacing: 3px; font-weight: 700; border-radius: 30px; transition: 0.4s;
         }
-        .btn:hover { background: var(--gold); color: #000; box-shadow: 0 0 15px var(--gold); }
+        .btn:hover { background: var(--gold); color: #000; box-shadow: 0 0 20px var(--gold); }
     </style>
 </head>
 <body>
@@ -73,47 +69,46 @@
 
     <main class="showcase">
         <div class="card">
-            <img src="img/coronation.png" alt="Royal Salute">
-            <p class="name">Royal Salute Coronation</p>
-            <span class="price">R$ 249.000,90</span>
-            <a href="#" class="btn">SOLICITAR RESERVA</a>
+            <img src="img/miami.jpg" alt="Royal Salute Miami Edition">
+            <p class="name">Royal Salute 21Y<br><span style="font-size: 0.65rem; color: #888; font-family: 'Montserrat';">The Miami Polo Edition</span></p>
+            <span class="price">R$ 1.399,99</span>
+            <a href="https://amzn.to/3P38WqD" target="_blank" class="btn">ADQUIRIR AGORA</a>
         </div>
 
         <div class="card">
             <img src="img/macallan.png" alt="Macallan">
-            <p class="name">The Macallan 18Y Sherry Oak</p>
+            <p class="name">The Macallan 18Y<br><span style="font-size: 0.65rem; color: #888; font-family: 'Montserrat';">Sherry Oak</span></p>
             <span class="price">R$ 4.200,00</span>
-            <a href="#" class="btn">RESERVAR</a>
+            <a href="#" class="btn">RESERVAR AGORA</a>
         </div>
 
         <div class="card">
             <img src="img/blue.png" alt="Blue Label">
-            <p class="name">JW Blue Label Ghost & Rare</p>
+            <p class="name">JW Blue Label<br><span style="font-size: 0.65rem; color: #888; font-family: 'Montserrat';">Ghost & Rare</span></p>
             <span class="price">R$ 2.800,00</span>
-            <a href="#" class="btn">RESERVAR</a>
+            <a href="#" class="btn">RESERVAR AGORA</a>
         </div>
 
         <div class="card">
             <img src="img/100pipers.png" alt="100 Pipers">
-            <p class="name">100 Pipers Deluxe</p>
+            <p class="name">100 Pipers<br><span style="font-size: 0.65rem; color: #888; font-family: 'Montserrat';">Deluxe Scotch</span></p>
             <span class="price">R$ 95,00</span>
             <a href="#" class="btn">ADQUIRIR</a>
         </div>
     </main>
 
     <script>
-        // GERADOR DE NEBLINA DENSA
         const container = document.getElementById('smoke-container');
-        for (let i = 0; i < 20; i++) {
+        for (let i = 0; i < 35; i++) {
             const smoke = document.createElement('div');
             smoke.className = 'smoke';
-            const size = Math.random() * 400 + 300;
+            const size = Math.random() * 500 + 400;
             smoke.style.width = size + 'px';
             smoke.style.height = size + 'px';
             smoke.style.left = Math.random() * 100 + '%';
             smoke.style.top = Math.random() * 100 + '%';
-            smoke.style.setProperty('--x', (Math.random() * 400 - 200) + 'px');
-            smoke.style.setProperty('--y', (Math.random() * 400 - 200) + 'px');
+            smoke.style.setProperty('--x', (Math.random() * 600 - 300) + 'px');
+            smoke.style.setProperty('--y', (Math.random() * 600 - 300) + 'px');
             smoke.style.setProperty('--d', (Math.random() * 20 + 15) + 's');
             smoke.style.animationDelay = (Math.random() * 10) + 's';
             container.appendChild(smoke);
