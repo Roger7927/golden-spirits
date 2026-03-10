@@ -3,106 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GOLDEN SPIRITS | The Mystic Reserve</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
+    <title>GOLDEN SPIRITS | The Connoisseur's Reserve</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
     <style>
         :root { 
             --gold: #c5a059; 
+            --purple-neon: rgba(138, 43, 226, 0.5);
             --glass: rgba(10, 10, 10, 0.85);
-            /* Cor Roxa Densa baseada na referência image_10.png */
-            --purple-smoke: rgba(106, 13, 173, 0.4); 
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body { 
-            background: #000; /* Fundo preto puro para destacar a fumaça */
+            background: radial-gradient(circle at center, #1a0033 0%, #000 100%);
             color: #fff; 
             font-family: 'Montserrat', sans-serif; 
             overflow-x: hidden;
             min-height: 100vh;
         }
 
-        /* --- SISTEMA DE FUMAÇA DENSA E ROXA --- */
+        /* --- SISTEMA DE FUMAÇA DENSA (ROXO MÍSTICO) --- */
         #smoke-container { 
             position: fixed; 
             top: 0; left: 0; 
             width: 100%; height: 100%; 
-            z-index: 1; /* Fica atrás dos cards mas na frente do fundo */
+            z-index: 1; 
             pointer-events: none;
+            mix-blend-mode: screen;
         }
 
         .smoke { 
             position: absolute; 
             border-radius: 50%; 
-            filter: blur(80px); /* Desfoque maior para parecer nuvem */
-            animation: float var(--d) infinite linear; 
+            filter: blur(100px); 
+            animation: float var(--d) infinite ease-in-out; 
             opacity: 0; 
-            mix-blend-mode: screen; /* Faz as cores brilharem mais sobre o preto */
         }
 
         @keyframes float {
             0% { transform: translate(0, 0) scale(1); opacity: 0; }
-            20% { opacity: 0.6; }
-            80% { opacity: 0.6; }
-            100% { transform: translate(var(--x), var(--y)) scale(2); opacity: 0; }
+            20% { opacity: 0.5; }
+            80% { opacity: 0.5; }
+            100% { transform: translate(var(--x), var(--y)) scale(2.5); opacity: 0; }
         }
 
-        /* --- ESTILIZAÇÃO DO CONTEÚDO --- */
         header { padding: 80px 20px; text-align: center; position: relative; z-index: 10; }
         .brand { 
-            font-family: 'Cinzel', serif; 
+            font-family: 'Cinzel Decorative', cursive; 
             color: var(--gold); 
-            font-size: 3rem; 
-            letter-spacing: 10px; 
+            font-size: clamp(2rem, 8vw, 4rem); 
+            letter-spacing: 15px; 
             text-transform: uppercase;
-            text-shadow: 0 0 15px rgba(197, 160, 89, 0.5);
+            text-shadow: 0 0 30px rgba(138, 43, 226, 0.6);
         }
 
         .showcase { 
             display: flex; 
             flex-wrap: wrap; 
             justify-content: center; 
-            gap: 30px; 
+            gap: 40px; 
             padding: 0 5% 100px; 
             position: relative; 
-            z-index: 20; /* Garante que os cards fiquem na frente da fumaça */
+            z-index: 20; 
         }
         
+        /* --- CARDS FLUIDOS --- */
         .card { 
             background: var(--glass); 
-            border: 1px solid rgba(197, 160, 89, 0.1); 
-            padding: 40px; 
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(138, 43, 226, 0.2); 
+            padding: 45px 30px; 
             text-align: center; 
-            border-radius: 15px; 
+            border-radius: 30px; 
             width: 320px;
-            transition: all 0.5s ease; 
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.9);
         }
+
         .card:hover { 
-            transform: translateY(-15px) scale(1.03); 
-            border-color: var(--gold); 
-            box-shadow: 0 0 30px rgba(106, 13, 173, 0.5); /* Brilho roxo no hover */
+            transform: translateY(-20px) scale(1.02);
+            border-color: var(--gold);
+            box-shadow: 0 0 60px rgba(138, 43, 226, 0.4);
         }
-        
+
         .card img { 
             width: 100%; 
             height: 320px; 
             object-fit: contain; 
-            margin-bottom: 20px; 
-            filter: drop-shadow(0 15px 30px #000); 
+            margin-bottom: 25px; 
+            filter: drop-shadow(0 20px 40px #000);
+            transition: 0.5s ease;
         }
+        .card:hover img { transform: scale(1.1); }
         
-        .name { font-family: 'Cinzel', serif; font-size: 1.1rem; font-weight: 700; color: #fff; margin-bottom: 5px; }
-        .price { color: var(--gold); font-size: 1.3rem; font-weight: 600; margin-bottom: 25px; display: block; }
+        .name { font-family: 'Cinzel Decorative', cursive; font-size: 1rem; color: #fff; margin-bottom: 5px; }
+        .price { color: var(--gold); font-size: 1.4rem; font-weight: 600; margin-bottom: 30px; display: block; }
 
+        /* --- BOTÃO LAVA DOURADA --- */
         .btn { 
             display: block; text-decoration: none; color: #000; 
             background: linear-gradient(135deg, #c5a059 0%, #f5d76e 50%, #c5a059 100%);
-            padding: 18px; font-size: 0.8rem; letter-spacing: 3px; font-weight: 700; border-radius: 30px; transition: 0.4s;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            padding: 20px; font-size: 0.8rem; letter-spacing: 4px; font-weight: 700; border-radius: 50px; transition: 0.4s;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            animation: pulse-gold 2.5s infinite;
         }
-        .btn:hover { background: var(--gold); color: #fff; box-shadow: 0 0 20px var(--gold); transform: scale(1.05); }
+        .btn:hover { transform: scale(1.05); box-shadow: 0 0 30px var(--gold); color: #fff; }
 
-        footer { text-align: center; padding: 40px 20px; color: #444; font-size: 0.7rem; z-index: 10; position: relative; }
+        @keyframes pulse-gold {
+            0% { box-shadow: 0 0 10px rgba(197, 160, 89, 0.3); }
+            50% { box-shadow: 0 0 25px rgba(197, 160, 89, 0.7); }
+            100% { box-shadow: 0 0 10px rgba(197, 160, 89, 0.3); }
+        }
+
+        footer { text-align: center; padding: 60px; color: #555; font-size: 0.7rem; z-index: 10; position: relative; letter-spacing: 2px; }
     </style>
 </head>
 <body>
@@ -114,26 +126,33 @@
 
     <main class="showcase">
         <div class="card">
-            <img src="img/miami.jpg" alt="Miami Polo">
+            <img src="img/miami.jpg" alt="Royal Salute Miami Edition">
             <p class="name">Royal Salute 21Y</p>
+            <p style="font-size: 0.65rem; color: #888; margin-bottom: 10px;">THE MIAMI POLO EDITION</p>
             <span class="price">R$ 1.399,99</span>
             <a href="https://amzn.to/3P38WqD" target="_blank" class="btn">ADQUIRIR AGORA</a>
         </div>
+
         <div class="card">
-            <img src="img/macallan_18.jpg" alt="Macallan 18">
-            <p class="name">Macallan 18Y</p>
+            <img src="img/macallan_18.jpg" alt="The Macallan 18Y">
+            <p class="name">The Macallan 18Y</p>
+            <p style="font-size: 0.65rem; color: #888; margin-bottom: 10px;">DOUBLE CASK SCOTCH</p>
             <span class="price">R$ 3.349,90</span>
             <a href="https://amzn.to/4s79U3R" target="_blank" class="btn">ADQUIRIR AGORA</a>
         </div>
+
         <div class="card">
-            <img src="img/blue_umami.jpg" alt="Blue Label Umami">
+            <img src="img/blue_umami.jpg" alt="Blue Label Elusive Umami">
             <p class="name">JW Blue Label</p>
+            <p style="font-size: 0.65rem; color: #888; margin-bottom: 10px;">ELUSIVE UMAMI EDITION</p>
             <span class="price">R$ 2.556,90</span>
             <a href="https://amzn.to/4usoODs" target="_blank" class="btn">ADQUIRIR AGORA</a>
         </div>
+
         <div class="card">
-            <img src="img/hibiki_21.jpg" alt="Hibiki 21">
+            <img src="img/hibiki_21.jpg" alt="Hibiki 21 Anos">
             <p class="name">Hibiki 21 Anos</p>
+            <p style="font-size: 0.65rem; color: #888; margin-bottom: 10px;">SUNTORY JAPANESE WHISKY</p>
             <span class="price">R$ 6.300,79</span>
             <a href="https://amzn.to/40p41mh" target="_blank" class="btn">ADQUIRIR AGORA</a>
         </div>
@@ -141,34 +160,24 @@
 
     <footer>
         <p>© 2026 GOLDEN SPIRITS | CURADORIA GUILLERMO</p>
+        <p>A VENDA É PROIBIDA PARA MENORES DE 18 ANOS. APRECIE COM MODERAÇÃO.</p>
     </footer>
 
     <script>
         const container = document.getElementById('smoke-container');
-        
-        // Criar 50 partículas de fumaça para densidade
-        for (let i = 0; i < 50; i++) {
+        for (let i = 0; i < 65; i++) {
             const smoke = document.createElement('div');
             smoke.className = 'smoke';
-            
-            // Define o tamanho aleatório
-            const size = Math.random() * 600 + 400; // Nuvens grandes
+            const size = Math.random() * 800 + 400;
             smoke.style.width = size + 'px';
             smoke.style.height = size + 'px';
-            
-            // Define a cor Roxa Densa baseada na referência
-            smoke.style.background = 'radial-gradient(circle, rgba(106, 13, 173, 0.5) 0%, transparent 70%)';
-
-            // Posição inicial aleatória
-            smoke.style.left = Math.random() * 100 + '%';
-            smoke.style.top = Math.random() * 100 + '%';
-            
-            // Variáveis de animação aleatórias (direção e velocidade)
-            smoke.style.setProperty('--x', (Math.random() * 800 - 400) + 'px');
-            smoke.style.setProperty('--y', (Math.random() * 800 - 400) + 'px');
-            smoke.style.setProperty('--d', (Math.random() * 25 + 15) + 's');
+            smoke.style.background = 'radial-gradient(circle, rgba(138, 43, 226, 0.45) 0%, transparent 70%)';
+            smoke.style.left = Math.random() * 120 - 10 + '%';
+            smoke.style.top = Math.random() * 120 - 10 + '%';
+            smoke.style.setProperty('--x', (Math.random() * 1000 - 500) + 'px');
+            smoke.style.setProperty('--y', (Math.random() * 1000 - 500) + 'px');
+            smoke.style.setProperty('--d', (Math.random() * 20 + 15) + 's');
             smoke.style.animationDelay = (Math.random() * 10) + 's';
-
             container.appendChild(smoke);
         }
     </script>
