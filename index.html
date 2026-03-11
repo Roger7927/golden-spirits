@@ -3,100 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>GOLDEN SPIRITS | Luxury Reserve</title>
+    <title>GOLDEN SPIRITS | Exclusive Reserve</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
     <style>
-        :root { 
-            --gold: #c5a059; 
-            --royal-purple: #1a0033;
-            --neon-purple: rgba(138, 43, 226, 0.6);
-        }
-
-        /* --- LIMPEZA E FLUIDEZ NATIVA --- */
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        :root { --gold: #c5a059; --royal: #1a0033; --neon: rgba(138, 43, 226, 0.5); }
         
-        html { scroll-behavior: smooth; }
-
+        /* --- RESET SUPREMO PARA FLUIDEZ --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        html { scroll-behavior: smooth; height: 100%; overflow-y: scroll; }
+        
         body { 
             background: #000;
-            background-image: radial-gradient(circle at center, var(--royal-purple) 0%, #000 100%);
-            color: #fff; 
-            font-family: 'Montserrat', sans-serif; 
-            overflow-x: hidden;
-            min-height: 100vh;
-            /* Força renderização suave no Chrome/Safari */
-            -webkit-font-smoothing: antialiased;
+            background-attachment: fixed;
+            background-image: radial-gradient(circle at center, var(--royal) 0%, #000 100%);
+            color: #fff; font-family: 'Montserrat', sans-serif; 
+            overflow-x: hidden; -webkit-font-smoothing: antialiased;
         }
 
-        /* --- FUMAÇA OTIMIZADA (Menos Blur = Mais Velocidade) --- */
-        #smoke-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; mix-blend-mode: screen; }
+        /* --- FUMAÇA ULTRA-LEVE (GPU ACCELERATED) --- */
+        #smoke-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
         .smoke { 
-            position: absolute; 
-            border-radius: 50%; 
-            filter: blur(60px); /* Reduzido de 120 para 60 para ganhar fluidez */
-            animation: float var(--d) infinite ease-in-out; 
-            opacity: 0; 
-            will-change: transform; /* Avisa ao navegador para usar a GPU */
+            position: absolute; border-radius: 50%; 
+            background: radial-gradient(circle, var(--neon) 0%, transparent 70%);
+            filter: blur(50px); /* Blur reduzido para liberar memória */
+            animation: float var(--d) infinite linear; 
+            opacity: 0; transform: translate3d(0,0,0); /* Força modo 3D */
+            will-change: transform, opacity;
         }
         
         @keyframes float {
             0% { transform: translate3d(0, 0, 0) scale(1); opacity: 0; }
-            50% { opacity: 0.4; }
+            20% { opacity: 0.3; }
             100% { transform: translate3d(var(--x), var(--y), 0) scale(2); opacity: 0; }
         }
 
         header { padding: 60px 20px 20px; text-align: center; position: relative; z-index: 10; }
         .brand { 
             font-family: 'Cinzel Decorative', cursive; color: var(--gold); 
-            font-size: clamp(2rem, 8vw, 3.5rem); letter-spacing: 8px; 
-            text-transform: uppercase; text-shadow: 0 0 20px var(--neon-purple);
+            font-size: clamp(2rem, 8vw, 3.5rem); letter-spacing: 10px; 
+            text-shadow: 0 0 20px var(--neon);
         }
 
         .showcase { 
-            display: flex; flex-wrap: wrap; justify-content: center; 
-            gap: 25px; padding: 20px 15px 80px; position: relative; z-index: 20; 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 30px; padding: 20px 5% 100px; max-width: 1400px; margin: 0 auto;
+            position: relative; z-index: 20; 
         }
         
         /* --- CARDS ESTÁVEIS --- */
         .card { 
-            background: rgba(15, 15, 15, 0.9); 
-            border: 1px solid rgba(197, 160, 89, 0.2); 
-            padding: 40px 20px; text-align: center; border-radius: 40px; 
-            width: 100%; max-width: 310px;
-            /* Usa translate3d para animação via hardware (liso como seda) */
-            transform: translate3d(0,0,0);
-            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease;
+            background: rgba(15, 15, 15, 0.9); border: 1px solid rgba(197, 160, 89, 0.2); 
+            padding: 40px 25px; text-align: center; border-radius: 40px; 
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        .card:hover { 
-            transform: translate3d(0, -10px, 0) scale(1.02); 
-            border-color: var(--gold); 
-            box-shadow: 0 0 30px var(--neon-purple); 
-        }
-
-        .card img { 
-            width: 100%; height: 280px; object-fit: contain; 
-            margin-bottom: 20px; filter: drop-shadow(0 10px 20px #000); 
-        }
+        .card:hover { transform: scale(1.05); border-color: var(--gold); }
+        .card img { width: 100%; height: 280px; object-fit: contain; margin-bottom: 25px; pointer-events: none; }
         
         .name { font-family: 'Cinzel Decorative', cursive; font-size: 1.1rem; color: #fff; margin-bottom: 8px; }
-        .price { color: var(--gold); font-size: 1.4rem; font-weight: 600; margin-bottom: 25px; display: block; }
+        .price { color: var(--gold); font-size: 1.4rem; font-weight: 600; margin-bottom: 30px; display: block; }
 
         .btn { 
             display: block; text-decoration: none; color: #000; 
             background: linear-gradient(135deg, #c5a059 0%, #f5d76e 50%, #c5a059 100%);
-            padding: 18px; font-size: 0.8rem; letter-spacing: 3px; font-weight: 700; border-radius: 50px;
+            padding: 18px; font-size: 0.85rem; letter-spacing: 3px; font-weight: 700; border-radius: 50px;
+            transition: 0.3s;
         }
+        .btn:hover { box-shadow: 0 0 20px var(--gold); color: #fff; }
 
-        footer { text-align: center; padding: 40px 20px 100px; color: #555; font-size: 0.8rem; z-index: 10; position: relative; }
-        .legal { color: #aaa; font-weight: 700; text-transform: uppercase; margin-bottom: 15px; display: block; letter-spacing: 2px; }
-
-        /* AJUSTE PARA CELULAR */
-        @media (max-width: 768px) {
-            .card { max-width: 290px; padding: 30px 15px; }
-            .card img { height: 240px; }
-            .smoke { filter: blur(40px); } /* Mais leve ainda no celular */
-        }
+        footer { text-align: center; padding: 40px; color: #666; font-size: 0.8rem; z-index: 10; position: relative; }
+        .legal { color: #888; font-weight: 700; margin-bottom: 15px; display: block; letter-spacing: 2px; }
     </style>
 </head>
 <body>
@@ -137,21 +114,18 @@
 
     <script>
         const container = document.getElementById('smoke-container');
-        // Reduzi para 30 partículas (equilíbrio perfeito entre visual e RAM)
-        const count = window.innerWidth < 768 ? 20 : 35;
-        
-        for (let i = 0; i < count; i++) {
+        // Apenas 25 nuvens (é o "sweet spot" para o Ubuntu e Mobile)
+        for (let i = 0; i < 25; i++) {
             const smoke = document.createElement('div');
             smoke.className = 'smoke';
-            const size = Math.random() * 500 + 300;
+            const size = Math.random() * 400 + 300;
             smoke.style.width = size + 'px';
             smoke.style.height = size + 'px';
-            smoke.style.background = 'radial-gradient(circle, rgba(138, 43, 226, 0.4) 0%, transparent 70%)';
             smoke.style.left = Math.random() * 100 + '%';
             smoke.style.top = Math.random() * 100 + '%';
-            smoke.style.setProperty('--x', (Math.random() * 600 - 300) + 'px');
-            smoke.style.setProperty('--y', (Math.random() * 600 - 300) + 'px');
-            smoke.style.setProperty('--d', (Math.random() * 20 + 15) + 's');
+            smoke.style.setProperty('--x', (Math.random() * 400 - 200) + 'px');
+            smoke.style.setProperty('--y', (Math.random() * 400 - 200) + 'px');
+            smoke.style.setProperty('--d', (Math.random() * 15 + 10) + 's');
             container.appendChild(smoke);
         }
     </script>
