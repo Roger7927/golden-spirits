@@ -1,0 +1,39 @@
+<div class="container">
+    
+    <div class="glass-card">
+        <video autoplay loop muted playsinline class="back-video">
+            <source src="whisky.mp4" type="video/mp4">
+        </video>
+        <div class="card-content">
+            <span class="badget">PREMIUM BOTTLE</span>
+            <h1>THE BOTTLE</h1>
+            <p>A essência do ouro líquido em 4K.</p>
+            <button class="btn-neon">VER DETALHES</button>
+        </div>
+    </div>
+
+    <div class="glass-card card-neon">
+        <video autoplay loop muted playsinline class="back-video">
+            <source src="neon_glass.mp4" type="video/mp4">
+        </video>
+        <div class="card-content">
+            <span class="badget">NEON EXPERIENCE</span>
+            <h1>THE GLASS</h1>
+            <p>O copo futurista que brilha na noite.</p>
+            <button class="btn-neon btn-neon-glass">EXPLORAR</button>
+        </div>
+    </div>
+
+    <div class="glass-card card-smoke">
+        <video autoplay loop muted playsinline class="back-video">
+            <source src="smoke_purple.mp4" type="video/mp4">
+        </video>
+        <div class="card-content">
+            <span class="badget">SMOKE MISTERY</span>
+            <h1>THE SMOKE</h1>
+            <p>O mistério da fumaça roxa em looping.</p>
+            <button class="btn-neon btn-neon-smoke">DESCUBRIR</button>
+        </div>
+    </div>
+
+</div>

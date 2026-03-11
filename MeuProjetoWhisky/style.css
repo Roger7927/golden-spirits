@@ -1,0 +1,69 @@
+/* (c) 2026 Guillermo Roger Hernandez Chandia - ADS */
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+
+body { background-color: #000; min-height: 100vh; display: flex; flex-direction: column; align-items: center; overflow-x: hidden; }
+
+/* --- HEADER DO TOPO --- */
+.main-header {
+    text-align: center;
+    padding: 60px 20px 20px 20px;
+    z-index: 10;
+}
+
+.main-header h1 {
+    font-size: 4rem;
+    color: #d4af37;
+    letter-spacing: 15px;
+    text-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+    font-weight: 900;
+}
+
+.main-header p {
+    color: #fff;
+    letter-spacing: 8px;
+    font-size: 0.9rem;
+    opacity: 0.7;
+    margin-top: 10px;
+}
+
+/* --- PRELOADER --- */
+#preloader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; display: flex; justify-content: center; align-items: center; z-index: 9999; transition: opacity 0.8s ease-out; }
+.neon-text { color: #d4af37; letter-spacing: 5px; font-size: 0.8rem; margin-bottom: 15px; text-shadow: 0 0 10px #d4af37; animation: pulse 1.5s infinite; }
+.progress-bar { width: 200px; height: 2px; background: rgba(212, 175, 55, 0.1); overflow: hidden; }
+.progress-fill { width: 0%; height: 100%; background: #d4af37; box-shadow: 0 0 15px #d4af37; animation: loading 2.5s forwards; }
+@keyframes loading { 0% { width: 0%; } 100% { width: 100%; } }
+@keyframes pulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+.fade-out { opacity: 0; pointer-events: none; }
+
+/* --- CONTAINER E CARDS --- */
+.container { display: flex; flex-wrap: wrap; gap: 40px; justify-content: center; padding: 40px; width: 100%; }
+
+.glass-card { position: relative; width: 320px; height: 520px; border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1); }
+
+.back-video { position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; transform: translate(-50%, -50%); object-fit: cover; z-index: 1; filter: brightness(0.6); transition: 0.5s; }
+
+.card-content { position: relative; z-index: 2; padding: 30px; background: linear-gradient(to top, rgba(0,0,0,0.95), transparent); text-align: center; color: #fff; }
+
+/* --- INTERATIVIDADE --- */
+.glass-card:hover { transform: scale(1.05) translateY(-10px); }
+.glass-card:hover .back-video { filter: brightness(1); }
+
+.card-gold:hover { border-color: #d4af37; box-shadow: 0 0 30px rgba(212, 175, 55, 0.5); }
+.card-neon:hover { border-color: #ff8c00; box-shadow: 0 0 30px rgba(255, 140, 0, 0.5); }
+.card-purple:hover { border-color: #bf00ff; box-shadow: 0 0 30px rgba(191, 0, 255, 0.5); }
+
+/* --- BOTÕES --- */
+.btn-neon { background: transparent; padding: 12px 30px; margin-top: 15px; cursor: pointer; text-transform: uppercase; font-weight: bold; transition: 0.3s; width: 100%; }
+.card-gold .btn-neon { border: 1px solid #d4af37; color: #d4af37; }
+.card-neon .btn-neon { border: 1px solid #ff8c00; color: #ff8c00; }
+.card-purple .btn-neon { border: 1px solid #bf00ff; color: #bf00ff; }
+.btn-neon:hover { background: #fff; color: #000; box-shadow: 0 0 25px #fff; }
+.link-wrapper { text-decoration: none; }
+
+.disclaimer { padding: 40px; color: #333; font-size: 10px; width: 100%; text-align: center; }
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 768px) {
+    .main-header h1 { font-size: 2.5rem; letter-spacing: 5px; }
+}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Golden Spirits | A Escolha da Elite</title>
+</head>
+<body>
+
+    <div id="preloader">
+        <div class="loader-content">
+            <div class="neon-text">GOLDEN SPIRITS IS LOADING...</div>
+            <div class="progress-bar"><div class="progress-fill"></div></div>
+        </div>
+    </div>
+
+    <header class="main-header">
+        <h1>GOLDEN SPIRITS</h1>
+        <p>A ARTE DE APRECIAR O EXTRAORDINÁRIO</p>
+    </header>
+
+    <div class="container">
+        
+        <div class="glass-card card-gold">
+            <video autoplay loop muted playsinline class="back-video">
+                <source src="whisky.mp4" type="video/mp4">
+            </video>
+            <div class="card-content">
+                <span class="badget">RESERVA ESPECIAL</span>
+                <h1>THE BOTTLE</h1>
+                <p>Pureza absoluta e sabor premiado para quem não aceita o comum.</p>
+                <a href="https://roger7927.github.io/golden-spirits/" class="link-wrapper">
+                    <button class="btn-neon">ADQUIRIR AGORA</button>
+                </a>
+            </div>
+        </div>
+
+        <div class="glass-card card-neon">
+            <video autoplay loop muted playsinline class="back-video">
+                <source src="neon_glass.mp4" type="video/mp4">
+            </video>
+            <div class="card-content">
+                <span class="badget">DESIGN EXCLUSIVO</span>
+                <h1>THE EXPERIENCE</h1>
+                <p>Não é apenas um copo, é o ritual que define o seu sucesso.</p>
+                <a href="https://roger7927.github.io/golden-spirits/" class="link-wrapper">
+                    <button class="btn-neon">ELEVE SEU NÍVEL</button>
+                </a>
+            </div>
+        </div>
+
+        <div class="glass-card card-purple">
+            <video autoplay loop muted playsinline class="back-video">
+                <source src="smoke_purple.mp4" type="video/mp4">
+            </video>
+            <div class="card-content">
+                <span class="badget">ESTOQUE LIMITADO</span>
+                <h1>THE ATMOSPHERE</h1>
+                <p>Transforme qualquer ambiente em um refúgio de luxo e mistério.</p>
+                <a href="https://roger7927.github.io/golden-spirits/" class="link-wrapper">
+                    <button class="btn-neon">RESERVAR UNIDADE</button>
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <footer class="disclaimer">
+        (c) 2026 Guillermo Roger Hernandez Chandia - ADS | Projeto de Alta Conversão
+    </footer>
+
+    <script>
+        window.addEventListener('load', function() {
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => { preloader.classList.add('fade-out'); }, 2000); 
+        });
+    </script>
+</body>
+</html>
