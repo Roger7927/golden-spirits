@@ -8,11 +8,11 @@
     <style>
         :root { 
             --gold: #c5a059; 
-            --fire-glow: rgba(255, 140, 0, 0.3); /* Dourado/Laranja leve */
+            --fire-glow: rgba(255, 140, 0, 0.3);
             --dark-bg: #0a0a0a;
         }
 
-        /* --- RESET E ACELERAÇÃO --- */
+        /* --- RESET E PERFORMANCE --- */
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         html { scroll-behavior: smooth; }
         
@@ -23,12 +23,12 @@
             overflow-x: hidden; -webkit-font-smoothing: antialiased;
         }
 
-        /* --- FUMAÇA DE OURO (ULTRA FLUIDA) --- */
+        /* --- FUMAÇA DE OURO (SISTEMA DE PARTÍCULAS) --- */
         #smoke-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
         .smoke { 
             position: absolute; border-radius: 50%; 
             background: radial-gradient(circle, var(--fire-glow) 0%, transparent 70%);
-            filter: blur(30px); /* Ouro brilha mais com menos blur, economizando RAM */
+            filter: blur(30px);
             animation: float var(--d) infinite linear; 
             opacity: 0; transform: translate3d(0,0,0);
             will-change: transform;
@@ -47,33 +47,54 @@
             text-shadow: 0 0 15px rgba(197, 160, 89, 0.4);
         }
 
+        /* --- CONTAINER DE PRODUTOS (LAYOUT FLEXÍVEL) --- */
         .showcase { 
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px; padding: 20px 5% 80px; max-width: 1300px; margin: 0 auto;
-            position: relative; z-index: 20; 
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px; /* Reduzi o gap para sobrar mais espaço lateral */
+            padding: 40px 10px 80px; 
+            max-width: 1500px; /* Largura aumentada para acomodar os 4 cards */
+            margin: 0 auto;
+            position: relative; 
+            z-index: 20; 
         }
         
-        /* --- CARDS ADAPTÁVEIS --- */
+        /* --- CARDS SOLO --- */
         .card { 
-            background: rgba(15, 15, 15, 0.9); border: 1px solid rgba(197, 160, 89, 0.15); 
-            padding: 40px 25px; text-align: center; border-radius: 40px; 
+            /* flex: grow | shrink | basis */
+            flex: 0 1 260px; /* Base reduzida para 260px para garantir os 4 na linha */
+            background: rgba(15, 15, 15, 0.9); 
+            border: 1px solid rgba(197, 160, 89, 0.15); 
+            padding: 35px 20px; 
+            text-align: center; 
+            border-radius: 40px; 
             transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 550px;
         }
 
         .card:hover { transform: scale(1.03); border-color: var(--gold); }
-        .card img { width: 100%; height: 280px; object-fit: contain; margin-bottom: 25px; }
+        .card img { width: 100%; height: 260px; object-fit: contain; margin-bottom: 25px; }
         
-        .name { font-family: 'Cinzel Decorative', cursive; font-size: 1.1rem; color: #fff; margin-bottom: 8px; }
-        .price { color: var(--gold); font-size: 1.5rem; font-weight: 600; margin-bottom: 30px; display: block; }
+        .name { font-family: 'Cinzel Decorative', cursive; font-size: 1rem; color: #fff; margin-bottom: 8px; }
+        .price { color: var(--gold); font-size: 1.4rem; font-weight: 600; margin-bottom: 30px; display: block; }
 
         .btn { 
             display: block; text-decoration: none; color: #000; 
             background: linear-gradient(135deg, #c5a059 0%, #f5d76e 50%, #c5a059 100%);
-            padding: 18px; font-size: 0.85rem; letter-spacing: 3px; font-weight: 700; border-radius: 50px;
+            padding: 18px; font-size: 0.8rem; letter-spacing: 2px; font-weight: 700; border-radius: 50px;
         }
 
+        /* --- RODAPÉ E REGRAS DE AFILIADO --- */
         footer { text-align: center; padding: 60px 20px 100px; color: #555; font-size: 0.8rem; z-index: 10; position: relative; }
+        .disclaimer { 
+            max-width: 900px; margin: 0 auto 25px; color: #777; font-style: italic; line-height: 1.6; 
+            border-top: 1px solid rgba(197, 160, 89, 0.1); padding-top: 25px;
+        }
         .legal { color: #888; font-weight: 700; text-transform: uppercase; margin-bottom: 10px; display: block; letter-spacing: 2px; }
     </style>
 </head>
@@ -83,39 +104,42 @@
 
     <main class="showcase">
         <div class="card">
-            <img src="img/miami.jpg" alt="Miami Polo">
+            <img src="img/miami.jpg" alt="Royal Salute 21Y">
             <p class="name">Royal Salute 21Y</p>
             <span class="price">R$ 1.399,99</span>
             <a href="https://amzn.to/3P38WqD" target="_blank" class="btn">ADQUIRIR AGORA</a>
         </div>
         <div class="card">
-            <img src="img/macallan_18.jpg" alt="Macallan 18">
+            <img src="img/macallan_18.jpg" alt="The Macallan 18Y">
             <p class="name">The Macallan 18Y</p>
             <span class="price">R$ 3.349,90</span>
             <a href="https://amzn.to/4s79U3R" target="_blank" class="btn">ADQUIRIR AGORA</a>
         </div>
         <div class="card">
-            <img src="img/blue_umami.jpg" alt="Blue Label Umami">
+            <img src="img/blue_umami.jpg" alt="JW Blue Label">
             <p class="name">JW Blue Label</p>
-            <span class="price">R$ 2.556,90</span>
+            <span class="price">R$ 1.789,83</span>
             <a href="https://amzn.to/4usoODs" target="_blank" class="btn">ADQUIRIR AGORA</a>
         </div>
         <div class="card">
-            <img src="img/hibiki_21.jpg" alt="Hibiki 21">
+            <img src="img/hibiki_21.jpg" alt="Hibiki 21 Anos">
             <p class="name">Hibiki 21 Anos</p>
-            <span class="price">R$ 6.300,79</span>
+            <span class="price">R$ 6.304,57</span>
             <a href="https://amzn.to/40p41mh" target="_blank" class="btn">ADQUIRIR AGORA</a>
         </div>
     </main>
 
     <footer>
+        <div class="disclaimer">
+            Aviso Legal: Participo do Programa de Associados e recebo comissão por compras qualificadas. 
+            Não possuo estoque próprio; as vendas, preços e prazos são de inteira responsabilidade dos parceiros oficiais.
+        </div>
         <span class="legal">Consumo proibido para menores de 18 anos.</span>
         <p>© 2026 GOLDEN SPIRITS - TODOS OS DIREITOS RESERVADOS.</p>
     </footer>
 
     <script>
         const container = document.getElementById('smoke-container');
-        // Reduzido para 30 nuvens de ouro — Eficiência máxima.
         for (let i = 0; i < 30; i++) {
             const smoke = document.createElement('div');
             smoke.className = 'smoke';
